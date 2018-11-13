@@ -2,10 +2,11 @@
     <string name="app_name" translatable="false">AndroBoum</string>
     <string name="titre">L\'application qui fait boum !</string>
     <string name="nom" translatable="false">Elise Joffre - 2018</string>
-    <string name="start" >Démarrer</string>
+    <string name="start">Démarrer</string>
     <string name="facebook_application_id" translatable="false">1809914232370472</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb1809914232370472</string>
     <string name="action_logout" translatable="false">Deconnexion</string>
     <string name="action_settings" translatable="false">Paramètres</string>
+    <string name="imageUploaded" translatable="false">Image ajoutée</string>
 
 </resources>

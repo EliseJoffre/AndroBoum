@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="titre">The bombing application !</string>
-    <string name="start" >Start</string>
+    <string name="start">Start</string>
     <string name="action_logout" translatable="false">Deconnexion</string>
     <string name="action_settings" translatable="false">Settings</string>
+    <string name="imageUploaded" translatable="false">Image Downloaded</string>
 </resources>
