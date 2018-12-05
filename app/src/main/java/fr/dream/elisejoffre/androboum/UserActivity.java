@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +59,7 @@ public class UserActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         user = new Profil();
         auth = FirebaseAuth.getInstance();
+        Button listUsers;
 
 
         if (auth.getCurrentUser() != null) {
@@ -93,6 +95,13 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        listUsers = findViewById(R.id.listUsers);
+        listUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lancerListeUsers();
+            }
+        });
 
     }
 
@@ -159,7 +168,7 @@ public class UserActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     Log.v("AndroBoum", e.getMessage());
                 }
-                ;
+
             }
         }
 
@@ -178,11 +187,10 @@ public class UserActivity extends AppCompatActivity {
             case R.id.action_settings:
                 return true;
             case R.id.action_logout:
-
                 AuthUI.getInstance().signOut(this);
+                AndroBoumApp.setIsConnected(false);
                 user.setConnected(false);
                 finish();
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -275,5 +283,13 @@ public class UserActivity extends AppCompatActivity {
         AuthUI.getInstance().signOut(this);
         super.onDestroy();
     }
+
+    public void lancerListeUsers() {
+        Intent intent = new Intent(this, UserListActivity.class);
+        startActivity(intent);
+
+
+    }
+
 
 }
