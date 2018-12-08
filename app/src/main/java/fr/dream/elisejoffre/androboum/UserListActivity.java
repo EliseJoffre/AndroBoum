@@ -2,6 +2,7 @@ package fr.dream.elisejoffre.androboum;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -89,7 +91,7 @@ public class UserListActivity extends AppCompatActivity {
     final List<Profil> userList = new ArrayList<>();
     private MyArrayAdapter adapter;
     boolean filterConnected = false;
-
+    final Context context = this;
     @Override
     protected void
     onCreate(Bundle savedInstanceState) {
@@ -119,6 +121,19 @@ public class UserListActivity extends AppCompatActivity {
             }
         };
         mDatabase.addValueEventListener(postListener);
+
+        //ce qu'on fait lorsqu'on click sur un user de la liste affichée
+        listeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int
+                    position, long l) {
+                // code exécuté quand on clique sur un des items de la liste.
+                // le paramètre position contient le numéro de l'item cliqué.
+                Intent intent = new Intent(context,OtherUserActivity.class);
+                intent.putExtra("position",position);
+                startActivity(intent);
+            }
+        });
     }
 
 

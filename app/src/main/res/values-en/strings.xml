@@ -17,6 +17,7 @@
     <string name="imageUploaded" translatable="false">Image uploaded</string>
 
     <string name="action_list">Users List</string>
+    <string name="email">Mail</string>
     <string name="action_bomb">Bomber !</string>
     <string name="cible">target</string>
     <string name="action_bomber">Resend the bomb</string>

@@ -20,6 +20,8 @@
         </activity>
         <activity android:name="fr.dream.elisejoffre.androboum.UserListActivity">
         </activity>
+        <activity android:name="fr.dream.elisejoffre.androboum.OtherUserActivity">
+        </activity>
     </application>
 
 </manifest>
