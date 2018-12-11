@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_user"
         app:layout_constraintVertical_bias="0.327"
-        app:srcCompat="@drawable/people" />
+        android:src="@drawable/manager" />
 
     <TextView
         android:id="@+id/mail"
@@ -49,7 +49,8 @@
         app:layout_constraintStart_toEndOf="@+id/mail"
         app:layout_constraintTop_toBottomOf="@+id/score"
         app:layout_constraintVertical_bias="0.449"
-        app:srcCompat="@android:drawable/checkbox_on_background" />
+        android:src="@drawable/ic_check_circle_black_24dp"
+        />
 
     <Button
         android:id="@+id/action_bomb"

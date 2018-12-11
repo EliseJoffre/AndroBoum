@@ -70,7 +70,7 @@ public class UserListActivity extends AppCompatActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference photoRef = storage.getReference().child(p.getEmail() + "/photo.jpg");
             if (photoRef != null) {
-                GlideApp.with(getContext()).load(photoRef).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.people).into(imageProfilView);
+                GlideApp.with(getContext()).load(photoRef).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.manager).into(imageProfilView);
                 // on positionne le email dans le TextView
                 textView.setText(p.getEmail());
                 // si l'utilisateur n'est pas connecté, on rend invisible le troisième // composant

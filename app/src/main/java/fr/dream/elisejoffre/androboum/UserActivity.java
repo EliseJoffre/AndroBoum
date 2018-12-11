@@ -188,7 +188,6 @@ public class UserActivity extends AppCompatActivity {
                 return true;
             case R.id.action_logout:
                 AuthUI.getInstance().signOut(this);
-                AndroBoumApp.setIsConnected(false);
                 user.setConnected(false);
                 finish();
                 return true;
@@ -217,7 +216,7 @@ public class UserActivity extends AppCompatActivity {
         // Load the image using Glide
         GlideApp.with(this /* context */)
                 .load(photoRef)
-                .skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.people).into(imageView);
+                .skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.manager).into(imageView);
     }
 
 
@@ -257,6 +256,8 @@ public class UserActivity extends AppCompatActivity {
             user.setEmail(fuser.getEmail());
             user.setConnected(true);
         }
+
+        AndroBoumApp.buildBomber(this);
     }
 
     private void updateProfil(Profil user) {

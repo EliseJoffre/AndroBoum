@@ -112,7 +112,7 @@ public class OtherUserActivity extends AppCompatActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference photoRef = storage.getReference().child(p.getEmail() + "/photo.jpg");
             if (photoRef != null) {
-                GlideApp.with(context).load(photoRef).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.people).into(photo_profil);
+                GlideApp.with(context).load(photoRef).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.manager).into(photo_profil);
 
             }
             if (!p.isConnected()) {
@@ -124,6 +124,24 @@ public class OtherUserActivity extends AppCompatActivity {
             //récupération du score
             //ajout de la possibilité de bomber l'individu
             Button bomber = (Button) layout.findViewById(R.id.action_bomb);
+            bomber.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.v("Bomb","Envoie d'une bombe");
+                    Log.v("Bomb",""+p.getEmail());
+                    AndroBoumApp.getBomber().setBomb(p, new Bomber.BomberInterface() {
+                        @Override
+                        public void userBombed() {
+                        }
+                        @Override
+                        public void userBomber() {
+                            // on lance l'activité de contrôle de la bombe
+                            Log.v("Bomb","ActivityBombLauch");
+                            Intent intent = new Intent(context, BombActivity.class);
+                            context.startActivity(intent);}
+                    });
+                }
+            });
 
 
         }

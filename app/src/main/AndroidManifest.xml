@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".AndroBoumApp"
         android:theme="@style/AppTheme">
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +25,8 @@
         </activity>
         <activity android:name="fr.dream.elisejoffre.androboum.OtherUserActivity">
         </activity>
+
+        <activity android:name=".BombActivity" > </activity>
     </application>
 
 </manifest>
