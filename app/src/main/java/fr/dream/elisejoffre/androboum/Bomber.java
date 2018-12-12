@@ -1,6 +1,5 @@
 package fr.dream.elisejoffre.androboum;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -49,6 +48,7 @@ public class Bomber {
     // interface déclarant les deux callbacks.
     public interface BomberInterface {
         void userBombed();
+
         void userBomber();
     }
 
@@ -145,14 +145,11 @@ public class Bomber {
             notificationManager.createNotificationChannel(notificationChannel);
 
             final NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(context,NOTIFICATION_CHANNEL_ID)
+                    new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                             .setSmallIcon(R.drawable.ic_priority_high_black_24dp)
                             .setContentTitle("AndroBoumApp")
                             .setContentText(context.getResources().getString(R.string.bombedText) + " " + other.getEmail() + " 5s")
-                            .setVibrate(new long[]{0, 1000})
-
-
-                    ;
+                            .setVibrate(new long[]{0, 1000});
 
             // spécification de l'activité appelée en cas de click sur la notification
             Intent resultIntent = new Intent(context, BombActivity.class);
@@ -193,7 +190,7 @@ public class Bomber {
             // on démarre le compte à rebours
             timer.start();
 
-        }else{
+        } else {
 
             final NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(context)

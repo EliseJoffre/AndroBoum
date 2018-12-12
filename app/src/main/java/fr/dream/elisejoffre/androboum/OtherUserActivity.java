@@ -3,9 +3,9 @@ package fr.dream.elisejoffre.androboum;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OtherUserActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -79,7 +78,7 @@ public class OtherUserActivity extends AppCompatActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             // on va chercher la layout
-            ViewGroup layout = (ViewGroup) View.inflate(context, R.layout.other_user_fragment,null);
+            ViewGroup layout = (ViewGroup) View.inflate(context, R.layout.other_user_fragment, null);
             // on l'ajoute à la vue
             container.addView(layout);
             // on le remplit en fonction du profil
@@ -127,18 +126,20 @@ public class OtherUserActivity extends AppCompatActivity {
             bomber.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.v("Bomb","Envoie d'une bombe");
-                    Log.v("Bomb",""+p.getEmail());
+                    Log.v("Bomb", "Envoie d'une bombe");
+                    Log.v("Bomb", "" + p.getEmail());
                     AndroBoumApp.getBomber().setBomb(p, new Bomber.BomberInterface() {
                         @Override
                         public void userBombed() {
                         }
+
                         @Override
                         public void userBomber() {
                             // on lance l'activité de contrôle de la bombe
-                            Log.v("Bomb","ActivityBombLauch");
+                            Log.v("Bomb", "ActivityBombLauch");
                             Intent intent = new Intent(context, BombActivity.class);
-                            context.startActivity(intent);}
+                            context.startActivity(intent);
+                        }
                     });
                 }
             });

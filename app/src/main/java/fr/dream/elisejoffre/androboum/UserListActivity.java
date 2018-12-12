@@ -92,6 +92,7 @@ public class UserListActivity extends AppCompatActivity {
     private MyArrayAdapter adapter;
     boolean filterConnected = false;
     final Context context = this;
+
     @Override
     protected void
     onCreate(Bundle savedInstanceState) {
@@ -129,8 +130,8 @@ public class UserListActivity extends AppCompatActivity {
                     position, long l) {
                 // code exécuté quand on clique sur un des items de la liste.
                 // le paramètre position contient le numéro de l'item cliqué.
-                Intent intent = new Intent(context,OtherUserActivity.class);
-                intent.putExtra("position",position);
+                Intent intent = new Intent(context, OtherUserActivity.class);
+                intent.putExtra("position", position);
                 startActivity(intent);
             }
         });
@@ -149,7 +150,11 @@ public class UserListActivity extends AppCompatActivity {
             case R.id.action_filtre:
                 // choix de l'action "Filtre"
                 showFilterDialog();
-
+                return true;
+            case R.id.action_map:
+                // choix de l'action Map
+                Intent intent = new Intent(this, MapsActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 /// aucune action reconnue

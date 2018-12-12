@@ -2,7 +2,9 @@ package fr.dream.elisejoffre.androboum;
 
 public class Profil {
 
-    enum BombStatut { IDLE, AWAITING, BOMBER, BOMBED };
+    enum BombStatut {IDLE, AWAITING, BOMBER, BOMBED}
+
+    ;
     // mon email
     private String email;
     // mon statut de connexion (vrai ou faux)
@@ -16,6 +18,25 @@ public class Profil {
     private String otherUseremail;
     // mon score
     private long score = 0;
+    private double latitude;
+    private double longitude;
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
 
     public String getEmail() {
         return email;

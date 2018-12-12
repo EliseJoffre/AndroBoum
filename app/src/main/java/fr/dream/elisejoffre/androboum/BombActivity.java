@@ -23,7 +23,7 @@ public class BombActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         AndroBoumApp.getBomber().setCallback(null);
-        Log.v("AndroBoumApp","On destroy");
+        Log.v("AndroBoumApp", "On destroy");
     }
 
     @Override
@@ -38,7 +38,7 @@ public class BombActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         // vient-on d'une notification ?
-        boolean notification = intent.getBooleanExtra("notification",false);
+        boolean notification = intent.getBooleanExtra("notification", false);
         if (notification) {
             if (AndroBoumApp.getBomber().timer != null) AndroBoumApp.getBomber().timer.cancel();
         }
@@ -80,7 +80,7 @@ public class BombActivity extends AppCompatActivity {
                 progressBar.setProgress(0);
                 progress = 0;
                 // et on déclenche le countdown
-                timer=new CountDownTimer(timeleft,1000) {
+                timer = new CountDownTimer(timeleft, 1000) {
 
 
                     @Override
@@ -125,11 +125,11 @@ public class BombActivity extends AppCompatActivity {
                 long timeleft = Bomber.timetoboum - (System.currentTimeMillis() - Bomber.bombedTime);
 
                 // On initilise la barre de progression et on démarre le compte à rebours...
-                progressBar.setMax((int) (timeleft/1000));
+                progressBar.setMax((int) (timeleft / 1000));
                 progressBar.setProgress(0);
                 progress = 0;
 
-                timer=new CountDownTimer(timeleft,1000) {
+                timer = new CountDownTimer(timeleft, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         progress++;

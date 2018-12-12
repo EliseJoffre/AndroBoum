@@ -16,6 +16,7 @@ public class AndroBoumApp extends android.app.Application {
 
     private static Bomber bomber;
 
+
     static public void setCallback(Bomber.BomberInterface callback) {
         bomber.setCallback(callback);
     }
@@ -31,7 +32,7 @@ public class AndroBoumApp extends android.app.Application {
         Log.v("AndroBoumApp", "coucou");
     }
 
-    static public void buildBomber(Context c)   {
+    static public void buildBomber(Context c) {
         bomber = new Bomber(c);
     }
 
