@@ -44,22 +44,19 @@ import java.util.Arrays;
 
 public class UserActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
-    TextView textView;
-    ImageView imageView;
-    // défini un numéro unique pour repérer plus tard ce code // dans la méthode onActivityResult(...)
+    private TextView textView;
+    private ImageView imageView;
     private static final int SELECT_PICTURE = 124;
-    FirebaseAuth auth;
+    private FirebaseAuth auth;
     private Profil user;
     private FusedLocationProviderClient mFusedLocationClient;
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
-
 
     @Override
     protected void
     onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_user);
         textView = (TextView) findViewById(R.id.email);
@@ -69,31 +66,25 @@ public class UserActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         Button listUsers;
 
-
         if (auth.getCurrentUser() != null) {
-
             Log.v("AndroBoum", "je suis déjà connecté sous l'email : " + auth.getCurrentUser().getEmail());
             setUser();
             updateProfil(user);
             textView.setText(auth.getCurrentUser().getEmail());
             downloadImage();
         } else {
-
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(Arrays.asList(new
                     AuthUI.IdpConfig.GoogleBuilder().build(), new AuthUI.IdpConfig.FacebookBuilder().build()
             )).build(), 123);
         }
 
-
         imageView = (ImageView) findViewById(R.id.imageProfil);
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-
                 Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.setAction(Intent.ACTION_PICK);
                 Intent chooserIntent = Intent.createChooser(intent, "Image Chooser");
@@ -102,7 +93,6 @@ public class UserActivity extends AppCompatActivity {
                 return true;
             }
         });
-
         listUsers = findViewById(R.id.listUsers);
         listUsers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +100,6 @@ public class UserActivity extends AppCompatActivity {
                 lancerListeUsers();
             }
         });
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -123,15 +112,11 @@ public class UserActivity extends AppCompatActivity {
                 Log.v("AndroBoum", "je me suis connecté et mon email est : " +
                         response.getEmail());
 
-
                 if (response.getEmail() != null) {
                     textView.setText(response.getEmail());
                     downloadImage();
-
                 }
-
                 return;
-
             } else {
                 // echec de l'authentification
                 if (response == null) {
@@ -176,7 +161,6 @@ public class UserActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     Log.v("AndroBoum", e.getMessage());
                 }
-
             }
         }
 
@@ -201,10 +185,8 @@ public class UserActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
-
 
     private StorageReference getCloudStorageReference() {
         // on va chercher l'email de l'utilisateur connecté FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -226,7 +208,6 @@ public class UserActivity extends AppCompatActivity {
                 .load(photoRef)
                 .skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).placeholder(R.drawable.manager).into(imageView);
     }
-
 
     private void uploadImage() {
         StorageReference photoRef = getCloudStorageReference();
@@ -263,11 +244,9 @@ public class UserActivity extends AppCompatActivity {
             user.setUid(fuser.getUid());
             user.setEmail(fuser.getEmail());
             user.setConnected(true);
-
         }
         AndroBoumApp.buildBomber(this);
         getLocation();
-
     }
 
     //on récupère la position de l'user
@@ -295,8 +274,6 @@ public class UserActivity extends AppCompatActivity {
                             user.setLongitude(location.getLongitude());
                             updateProfil(user);
                         }
-
-
                     }
                 });
     }
@@ -349,8 +326,6 @@ public class UserActivity extends AppCompatActivity {
     public void lancerListeUsers() {
         Intent intent = new Intent(this, UserListActivity.class);
         startActivity(intent);
-
-
     }
 
 

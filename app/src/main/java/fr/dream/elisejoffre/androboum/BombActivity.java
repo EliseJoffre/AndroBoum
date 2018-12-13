@@ -17,7 +17,6 @@ public class BombActivity extends AppCompatActivity {
     Context context;
     CountDownTimer timer;
     int progress = 0;
-    final int initTime = 10000;
 
     @Override
     protected void onDestroy() {
@@ -39,8 +38,8 @@ public class BombActivity extends AppCompatActivity {
 
         // vient-on d'une notification ?
         boolean notification = intent.getBooleanExtra("notification", false);
-        if (notification) {
-            if (AndroBoumApp.getBomber().timer != null) AndroBoumApp.getBomber().timer.cancel();
+        if (notification && AndroBoumApp.getBomber().timer != null) {
+           AndroBoumApp.getBomber().timer.cancel();
         }
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);

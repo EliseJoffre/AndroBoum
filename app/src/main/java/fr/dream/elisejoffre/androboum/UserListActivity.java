@@ -33,7 +33,8 @@ import java.util.List;
 public class UserListActivity extends AppCompatActivity {
 
     private class MyArrayAdapter extends ArrayAdapter<Profil> {
-        List<Profil> liste, origListe;
+        List<Profil> liste;
+        List<Profil> origListe;
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
         private MyArrayAdapter(Context context, int resource, List<Profil> liste) {

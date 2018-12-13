@@ -3,8 +3,6 @@ package fr.dream.elisejoffre.androboum;
 public class Profil {
 
     enum BombStatut {IDLE, AWAITING, BOMBER, BOMBED}
-
-    ;
     // mon email
     private String email;
     // mon statut de connexion (vrai ou faux)
@@ -18,7 +16,9 @@ public class Profil {
     private String otherUseremail;
     // mon score
     private long score = 0;
+    // ma latitude
     private double latitude;
+    // ma longitude
     private double longitude;
 
     public void setLatitude(double latitude) {
